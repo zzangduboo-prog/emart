@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이마트 신촌점 K-Palette Zone - 다국어 스마트 가이드 (PRD 4.6)</title>
+  <meta name="description" content="이마트 신촌점 K-Palette Zone 외국인 관광객 맞춤형 4개 국어(한국어, English, 简体中文, 日本語) 실시간 다국어 스마트 매장 가이드">
+
+  <!-- Google Fonts: Outfit & Noto Sans KR -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom Vanilla CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Sticky Navigation Bar with Language Switcher -->
+  <header class="main-header" id="main-header">
+    <div class="header-inner">
+      <div class="brand-wrapper">
+        <span class="brand-emart-logo">e·mart</span>
+        <div class="brand-text-block">
+          <span class="brand-name" data-i18n="brandTitle" id="brand-title">이마트 신촌점</span>
+          <span class="brand-sub" data-i18n="brandSub" id="brand-sub">K-Palette Zone</span>
+        </div>
+      </div>
+
+      <!-- Core Feature 4.6: Multilingual Switcher -->
+      <nav class="lang-selector-container" id="lang-selector" aria-label="Language Selector">
+        <button type="button" class="lang-btn active" data-lang="ko" id="lang-btn-ko" aria-label="한국어 선택">
+          <span class="flag">🇰🇷</span>
+          <span>한국어</span>
+        </button>
+        <button type="button" class="lang-btn" data-lang="en" id="lang-btn-en" aria-label="Select English">
+          <span class="flag">🇺🇸</span>
+          <span>EN</span>
+        </button>
+        <button type="button" class="lang-btn" data-lang="zh" id="lang-btn-zh" aria-label="选择中文">
+          <span class="flag">🇨🇳</span>
+          <span>中文</span>
+        </button>
+        <button type="button" class="lang-btn" data-lang="ja" id="lang-btn-ja" aria-label="日本語を選択">
+          <span class="flag">🇯🇵</span>
+          <span>日本語</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="app-container" id="main-content">
+    
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero-section">
+      <div class="hero-feature-badge">
+        <span class="status-dot"></span>
+        <span data-i18n="badgeFeature" id="feature-badge-text">PRD 4.6 다국어 실시간 전환기</span> • 
+        <span data-i18n="badgeStatus" id="feature-status-text">정상 작동 중</span>
+      </div>
+      <h1 class="hero-title" data-i18n="heroTitle" id="hero-title">
+        외국인 관광객을 위한 다국어 스마트 가이드
+      </h1>
+      <p class="hero-desc" data-i18n="heroDesc" id="hero-desc">
+        상단 언어 버튼을 누르면 카테고리, 검색창, 매대 설명, 쇼핑 동선 안내가 새로고침 없이 즉시 번역됩니다.
+      </p>
+
+      <div class="active-lang-card" id="active-lang-card">
+        <span data-i18n="currentLangNotice">현재 선택된 언어</span>: 
+        <strong id="active-lang-badge"><span class="badge-flag">🇰🇷</span> <span class="badge-name">한국어 (KO)</span></strong>
+      </div>
+    </section>
+
+    <!-- Search Input Demonstration -->
+    <section class="search-wrapper" id="search-section" aria-label="매장 검색">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+        <input 
+          type="text" 
+          id="search-input" 
+          class="search-input" 
+          data-i18n-placeholder="searchPlaceholder" 
+          placeholder="찾으시는 매대나 상품을 검색하세요... (예: 불닭, 노브랜드, Tax Free)"
+          aria-label="Search"
+        >
+        <button type="button" class="search-btn" id="search-btn" data-i18n="btnSearch">검색</button>
+      </div>
+    </section>
+
+    <!-- Category Filter Chips Section -->
+    <section class="category-section" id="category-section" aria-label="카테고리 분류">
+      <div class="section-label">
+        <i class="fa-solid fa-layer-group text-amber-400"></i>
+        <span data-i18n="filterTitle">매장 카테고리 분류 (Category)</span>
+      </div>
+      <div class="category-chips-scroll" role="tablist">
+        <button type="button" class="category-chip active" id="cat-chip-all" role="tab">
+          <i class="fa-solid fa-border-all chip-icon"></i>
+          <span class="chip-text" data-i18n="categories.all">전체보기</span>
+        </button>
+        <button type="button" class="category-chip" id="cat-chip-palette" role="tab">
+          <i class="fa-solid fa-wand-magic-sparkles chip-icon" style="color: var(--kpalette-pink);"></i>
+          <span class="chip-text" data-i18n="categories.kPalette">K-Palette Zone (인기 큐레이션)</span>
+        </button>
+        <button type="button" class="category-chip" id="cat-chip-food" role="tab">
+          <i class="fa-solid fa-bowl-food chip-icon" style="color: var(--emart-yellow);"></i>
+          <span class="chip-text" data-i18n="categories.kFood">K-Food / 식품</span>
+        </button>
+        <button type="button" class="category-chip" id="cat-chip-beauty" role="tab">
+          <i class="fa-solid fa-spray-can-sparkles chip-icon" style="color: var(--accent-cyan);"></i>
+          <span class="chip-text" data-i18n="categories.kBeauty">K-Beauty / 퍼스널케어</span>
+        </button>
+        <button type="button" class="category-chip" id="cat-chip-nobrand" role="tab">
+          <i class="fa-solid fa-cart-shopping chip-icon" style="color: var(--emart-yellow);"></i>
+          <span class="chip-text" data-i18n="categories.noBrand">No Brand / 가성비 생활</span>
+        </button>
+        <button type="button" class="category-chip" id="cat-chip-service" role="tab">
+          <i class="fa-solid fa-passport chip-icon" style="color: var(--accent-green);"></i>
+          <span class="chip-text" data-i18n="categories.service">편의시설 / Tax-Free</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Interactive Live Preview Section: Store Card & Route Guide -->
+    <div class="preview-grid" id="preview-grid">
+      
+      <!-- Store Detail Card (Live translated) -->
+      <article class="preview-card" id="store-detail-card">
+        <div class="store-card-header">
+          <img src="data/c8faca65-e2e1-45da-a31b-967a928270cf.jpg" alt="이마트 신촌점 K-Palette Zone 매장" class="store-image" loading="lazy">
+          <div class="store-badges-overlay">
+            <span class="badge-pill-hot" data-i18n="sampleStore.hotBadge">SNS 실시간 핫템 🔥</span>
+            <span class="badge-pill-tax" data-i18n="sampleStore.taxFreeBadge">즉시 면세 (Tax Free) 가능</span>
+          </div>
+        </div>
+
+        <div class="store-card-body">
+          <div class="store-location-tag">
+            <i class="fa-solid fa-location-dot"></i>
+            <span data-i18n="sampleStore.aisle">B3층 입구 메인 팝업존</span>
+          </div>
+          <h2 class="store-title" data-i18n="sampleStore.name">
+            K-Palette Zone (K-트렌드 큐레이션존)
+          </h2>
+          <p class="store-desc" data-i18n="sampleStore.desc">
+            한국인 실제 구매 POS 데이터 및 SNS 바이럴 기반 Top 20 랭킹존입니다. 불닭 꿀조합부터 한식 만능 소스까지 한자리에서 만나보세요.
+          </p>
+
+          <!-- Popular Items List -->
+          <div class="popular-items-box">
+            <h3 class="popular-title" data-i18n="sampleStore.popularTitle">현지인 인기 베스트셀러 꿀조합</h3>
+            <div class="popular-item-row">
+              <div class="item-name-tag">
+                <span class="item-tag" data-i18n="sampleStore.item1Tag">SNS 화제</span>
+                <span data-i18n="sampleStore.item1Name">불닭 + 치즈 꿀조합 패키지</span>
+              </div>
+              <span class="item-price" data-i18n="sampleStore.item1Price">5,400원</span>
+            </div>
+            <div class="popular-item-row">
+              <div class="item-name-tag">
+                <span class="item-tag" data-i18n="sampleStore.item2Tag">실패 없는 맛</span>
+                <span data-i18n="sampleStore.item2Name">현지인 추천 만능 한식소스</span>
+              </div>
+              <span class="item-price" data-i18n="sampleStore.item2Price">4,200원</span>
+            </div>
+            <div class="popular-item-row">
+              <div class="item-name-tag">
+                <span class="item-tag" data-i18n="sampleStore.item3Tag">리프레시 간식</span>
+                <span data-i18n="sampleStore.item3Name">K-디저트 망고&패션프루트</span>
+              </div>
+              <span class="item-price" data-i18n="sampleStore.item3Price">3,800원</span>
+            </div>
+          </div>
+
+          <!-- NFC Notification Box -->
+          <div class="nfc-box">
+            <div class="nfc-header">
+              <i class="fa-solid fa-nfc-symbol"></i>
+              <span data-i18n="sampleStore.nfcTitle">1초 NFC 다국어 모국어 안내</span>
+            </div>
+            <p class="nfc-text" data-i18n="sampleStore.nfcDesc">
+              매대 태그에 스마트폰을 대면 15초 숏폼 레시피 및 상세 성분이 모국어로 즉시 표시됩니다.
+            </p>
+          </div>
+
+          <!-- Actions -->
+          <div class="store-actions">
+            <button type="button" class="action-btn btn-secondary" id="btn-wishlist">
+              <i class="fa-regular fa-heart"></i>
+              <span data-i18n="sampleStore.btnWishlist">쇼핑 목록에 담기</span>
+            </button>
+            <button type="button" class="action-btn btn-primary" id="btn-route">
+              <i class="fa-solid fa-diamond-turn-right"></i>
+              <span data-i18n="sampleStore.btnRoute">최단 동선 보기</span>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Wayfinding & Transit Guide Card -->
+      <aside class="route-guide-card" id="route-guide-panel">
+        <div>
+          <div class="section-label">
+            <i class="fa-solid fa-train-subway text-emerald-400"></i>
+            <span data-i18n="routeGuide.title">교통 및 연결 동선 안내</span>
+          </div>
+          <h2 class="store-title" style="font-size: 1.2rem; margin-top: 0.25rem;" data-i18n="routeGuide.subTitle">
+            헤매지 않는 신촌역 직결 쇼핑
+          </h2>
+
+          <div class="guide-step-list">
+            <div class="guide-step-item">
+              <div class="step-icon-wrap green">
+                <i class="fa-solid fa-subway"></i>
+              </div>
+              <div>
+                <h4 class="step-title" data-i18n="routeGuide.station">신촌역 2호선 지하 직결</h4>
+                <p class="step-desc" data-i18n="routeGuide.stationDesc">신촌역 지하 연결통로에서 이마트 신촌점 B3층으로 바로 입장 가능 (도보 1분)</p>
+              </div>
+            </div>
+
+            <div class="guide-step-item">
+              <div class="step-icon-wrap yellow">
+                <i class="fa-solid fa-route"></i>
+              </div>
+              <div>
+                <h4 class="step-title" data-i18n="routeGuide.yellowLine">바닥 노란색 유도선 (Yellow Route)</h4>
+                <p class="step-desc" data-i18n="routeGuide.yellowLineDesc">입구 바닥의 노란 화살표 유도선을 따라가면 K-Palette Zone과 Tax-Free 라운지까지 논스톱 안내</p>
+              </div>
+            </div>
+
+            <div class="guide-step-item">
+              <div class="step-icon-wrap purple">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+              </div>
+              <div>
+                <h4 class="step-title" data-i18n="routeGuide.taxFree">원스톱 Express Tax-Free</h4>
+                <p class="step-desc" data-i18n="routeGuide.taxFreeDesc">계산대 옆 무인 환급 키오스크에서 여권 스캔 즉시 5분 내 현장 환급 완료</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.5rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1rem;">
+          <p style="font-size: 0.8rem; color: var(--text-dim);">
+            © 2026 Emart Sinchon × K-Palette Zone • Vanilla JS i18n
+          </p>
+        </div>
+      </aside>
+
+    </div>
+
+  </main>
+
+  <!-- JavaScript Modules -->
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
