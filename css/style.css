@@ -1,0 +1,1101 @@
+/* ==========================================================================
+   Emart Sinchon K-Palette Zone - Design System & Stylesheet
+   Vanilla CSS with Modern Aesthetics, Glassmorphism, and Micro-interactions
+   ========================================================================== */
+
+:root {
+  /* Brand Palette */
+  --emart-yellow: #FFC400;
+  --emart-yellow-hover: #E5B000;
+  --kpalette-pink: #FF4081;
+  --kpalette-purple: #7C4DFF;
+  --accent-cyan: #06B6D4;
+  --accent-green: #10B981;
+  
+  /* Backgrounds & Surfaces (Dark Mode Theme) */
+  --bg-primary: #0A0E17;
+  --bg-secondary: #111827;
+  --surface-card: rgba(30, 41, 59, 0.7);
+  --surface-card-border: rgba(255, 255, 255, 0.08);
+  --surface-card-hover: rgba(51, 65, 85, 0.7);
+  --glass-bg: rgba(17, 24, 39, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  
+  /* Text & Typography */
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  --text-dim: #64748B;
+  --text-inverse: #0F172A;
+  
+  /* Spacing & Radii */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-glow-yellow: 0 0 20px rgba(255, 196, 0, 0.3);
+  --shadow-glow-pink: 0 0 20px rgba(255, 64, 129, 0.35);
+  
+  /* Transitions */
+  --trans-fast: 0.15s ease;
+  --trans-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --trans-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Reset & Base Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-primary);
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(255, 196, 0, 0.07) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(255, 64, 129, 0.08) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(124, 77, 255, 0.07) 0px, transparent 60%);
+  background-attachment: fixed;
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* App Container */
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem 4rem;
+}
+
+/* ==========================================================================
+   Header & Navigation
+   ========================================================================== */
+.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--glass-bg);
+  border-bottom: 1px solid var(--glass-border);
+  margin-bottom: 2rem;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-emart-logo {
+  background: var(--emart-yellow);
+  color: var(--text-inverse);
+  font-weight: 900;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-sm);
+  letter-spacing: -0.5px;
+  box-shadow: var(--shadow-glow-yellow);
+}
+
+.brand-text-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: -0.3px;
+  color: var(--text-main);
+}
+
+.brand-sub {
+  font-size: 0.75rem;
+  color: var(--kpalette-pink);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Language Selector (Core Feature 4.6) */
+.lang-selector-container {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(15, 23, 42, 0.8);
+  padding: 0.3rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--trans-fast);
+  user-select: none;
+}
+
+.lang-btn .flag {
+  font-size: 1.05rem;
+}
+
+.lang-btn:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.lang-btn.active {
+  background: linear-gradient(135deg, var(--emart-yellow), #FFA000);
+  color: #0F172A;
+  font-weight: 800;
+  box-shadow: 0 2px 10px rgba(255, 196, 0, 0.4);
+  transform: scale(1.02);
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero-section {
+  text-align: center;
+  padding: 2rem 1rem 2.5rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.hero-feature-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 64, 129, 0.12);
+  border: 1px solid rgba(255, 64, 129, 0.35);
+  color: #FF80AB;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.2px;
+}
+
+.hero-feature-badge .status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  box-shadow: 0 0 8px var(--accent-green);
+  animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.hero-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #FFFFFF 30%, #CBD5E1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-desc {
+  max-width: 650px;
+  margin: 0 auto 1.75rem;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+/* Active Language Status Indicator Card */
+.active-lang-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--surface-card);
+  border: 1px solid var(--surface-card-border);
+  padding: 0.55rem 1.25rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  box-shadow: var(--shadow-sm);
+}
+
+.badge-name {
+  color: var(--emart-yellow);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   Search Bar Component
+   ========================================================================== */
+.search-wrapper {
+  max-width: 720px;
+  margin: 0 auto 2.5rem;
+  position: relative;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: rgba(30, 41, 59, 0.6);
+  border: 1.5px solid var(--surface-card-border);
+  border-radius: var(--radius-full);
+  padding: 0.5rem 0.6rem 0.5rem 1.25rem;
+  box-shadow: var(--shadow-md);
+  transition: all var(--trans-normal);
+  backdrop-filter: blur(10px);
+}
+
+.search-box:focus-within {
+  border-color: var(--emart-yellow);
+  box-shadow: var(--shadow-glow-yellow);
+  background: rgba(30, 41, 59, 0.9);
+}
+
+.search-icon {
+  color: var(--text-dim);
+  font-size: 1.1rem;
+  margin-right: 0.75rem;
+}
+
+.search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.search-input::placeholder {
+  color: var(--text-dim);
+  transition: color var(--trans-fast);
+}
+
+.search-btn {
+  background: linear-gradient(135deg, var(--emart-yellow), #FFA000);
+  border: none;
+  color: var(--text-inverse);
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: transform var(--trans-fast), box-shadow var(--trans-fast);
+}
+
+.search-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 196, 0, 0.35);
+}
+
+/* ==========================================================================
+   Category Navigation Chips
+   ========================================================================== */
+.category-section {
+  margin-bottom: 3rem;
+}
+
+.section-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  margin-bottom: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.category-chips-scroll {
+  display: flex;
+  gap: 0.65rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scrollbar-width: none;
+}
+.category-chips-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.category-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: var(--surface-card);
+  border: 1px solid var(--surface-card-border);
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.65rem 1.15rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--trans-fast);
+  user-select: none;
+}
+
+.category-chip:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--text-main);
+  background: var(--surface-card-hover);
+  transform: translateY(-2px);
+}
+
+.category-chip.active {
+  background: linear-gradient(135deg, rgba(255, 64, 129, 0.2), rgba(124, 77, 255, 0.2));
+  border-color: var(--kpalette-pink);
+  color: #FFFFFF;
+  box-shadow: var(--shadow-glow-pink);
+}
+
+.category-chip .chip-icon {
+  font-size: 1rem;
+}
+
+/* ==========================================================================
+   Store Card Live Preview (PRD Item Demonstration)
+   ========================================================================== */
+.preview-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 900px) {
+  .preview-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.preview-card {
+  background: var(--surface-card);
+  border: 1px solid var(--surface-card-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--trans-normal), border-color var(--trans-normal);
+}
+
+.preview-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.store-card-header {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  background: #1e293b;
+}
+
+.store-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.preview-card:hover .store-image {
+  transform: scale(1.04);
+}
+
+.store-badges-overlay {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.badge-pill-hot {
+  background: rgba(255, 64, 129, 0.9);
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.badge-pill-tax {
+  background: rgba(16, 185, 129, 0.9);
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.store-card-body {
+  padding: 1.5rem;
+}
+
+.store-location-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--emart-yellow);
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.store-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+  color: var(--text-main);
+  line-height: 1.3;
+}
+
+.store-desc {
+  font-size: 0.925rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+  line-height: 1.55;
+}
+
+/* Popular Items List */
+.popular-items-box {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.popular-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.popular-item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.875rem;
+}
+
+.popular-item-row:last-child {
+  border-bottom: none;
+}
+
+.item-name-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.item-tag {
+  background: rgba(255, 196, 0, 0.15);
+  color: var(--emart-yellow);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.4rem;
+  border-radius: var(--radius-sm);
+}
+
+.item-price {
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+/* NFC Notification Box */
+.nfc-box {
+  background: linear-gradient(135deg, rgba(124, 77, 255, 0.15), rgba(255, 64, 129, 0.1));
+  border-left: 3px solid var(--kpalette-purple);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.nfc-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #C084FC;
+  margin-bottom: 0.25rem;
+}
+
+.nfc-text {
+  font-size: 0.8rem;
+  color: #E2E8F0;
+  line-height: 1.4;
+}
+
+/* Action Buttons */
+.store-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all var(--trans-fast);
+  border: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--emart-yellow), #FFA000);
+  color: var(--text-inverse);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.08);
+  box-shadow: var(--shadow-glow-yellow);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-main);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.btn-secondary.active {
+  border-color: var(--kpalette-pink);
+  color: var(--kpalette-pink);
+}
+
+/* ==========================================================================
+   Wayfinding & Transit Guide Card
+   ========================================================================== */
+.route-guide-card {
+  background: var(--surface-card);
+  border: 1px solid var(--surface-card-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.guide-step-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.guide-step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.step-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.step-icon-wrap.yellow { color: var(--emart-yellow); border-color: rgba(255, 196, 0, 0.3); }
+.step-icon-wrap.green { color: var(--accent-green); border-color: rgba(16, 185, 129, 0.3); }
+.step-icon-wrap.purple { color: var(--kpalette-purple); border-color: rgba(124, 77, 255, 0.3); }
+
+.step-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.2rem;
+}
+
+.step-desc {
+  font-size: 0.825rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   Micro-animations & Toast Notification
+   ========================================================================== */
+@keyframes translatePulseAnim {
+  0% {
+    background-color: rgba(255, 196, 0, 0.25);
+    border-radius: 4px;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.i18n-pulse {
+  animation: translatePulseAnim 0.7s ease-out;
+}
+
+.i18n-toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid var(--emart-yellow);
+  color: var(--text-main);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), var(--shadow-glow-yellow);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.i18n-toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Interactive Map Section (PRD 4.1)
+   ========================================================================== */
+.map-section {
+  margin-bottom: 3rem;
+}
+
+.map-section .section-label {
+  margin-bottom: 1rem;
+}
+
+/* Map Card Container */
+.map-card {
+  background: var(--surface-card);
+  border: 1px solid var(--surface-card-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Map Tabs */
+.map-tabs {
+  display: flex;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.map-tab-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--trans-fast);
+  position: relative;
+}
+
+.map-tab-btn:hover {
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.map-tab-btn.active {
+  color: var(--emart-yellow);
+  background: rgba(255, 196, 0, 0.06);
+}
+
+.map-tab-btn.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: var(--emart-yellow);
+  border-radius: 2px 2px 0 0;
+}
+
+/* Map Body */
+.map-body {
+  position: relative;
+}
+
+/* SVG Wrapper (Pannable/Zoomable area) */
+.map-svg-wrapper {
+  width: 100%;
+  height: 420px;
+  overflow: hidden;
+  cursor: grab;
+  position: relative;
+  background: #0a0e17;
+}
+
+.map-svg-wrapper:active {
+  cursor: grabbing;
+}
+
+.map-svg {
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.3s ease;
+}
+
+.map-svg.hidden {
+  display: none;
+}
+
+/* ── Pin Styles ── */
+.map-pin {
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.3s ease;
+}
+
+.map-pin:hover,
+.map-pin.hovered {
+  transform: scale(1.15);
+}
+
+.map-pin .pin-circle {
+  transition: r 0.2s ease, filter 0.2s ease;
+}
+
+.map-pin:hover .pin-circle,
+.map-pin.hovered .pin-circle {
+  filter: url(#glow-pink);
+}
+
+.map-pin.selected .pin-circle {
+  filter: url(#glow-yellow);
+  stroke: var(--emart-yellow);
+  stroke-width: 3;
+}
+
+/* Pin Pulse Ring Animation */
+.pin-pulse-ring {
+  animation: pinPulse 2s infinite ease-out;
+}
+
+@keyframes pinPulse {
+  0% {
+    r: 10;
+    opacity: 0.7;
+  }
+  70% {
+    r: 22;
+    opacity: 0;
+  }
+  100% {
+    r: 22;
+    opacity: 0;
+  }
+}
+
+.map-pin:hover .pin-pulse-ring,
+.map-pin.selected .pin-pulse-ring {
+  animation: pinPulseActive 1.2s infinite ease-out;
+}
+
+@keyframes pinPulseActive {
+  0% {
+    r: 10;
+    opacity: 0.9;
+  }
+  70% {
+    r: 28;
+    opacity: 0;
+  }
+  100% {
+    r: 28;
+    opacity: 0;
+  }
+}
+
+/* Dimmed State (category filter) */
+.store-zone.dimmed {
+  opacity: 0.15;
+  transition: opacity 0.3s ease;
+}
+
+.map-pin.dimmed {
+  opacity: 0.15;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Zone Rect Hover */
+.zone-rect {
+  transition: fill 0.2s ease, stroke 0.2s ease;
+}
+
+/* Yellow Route Line Animation */
+.yellow-route-line {
+  animation: dashFlow 2s linear infinite;
+}
+
+@keyframes dashFlow {
+  to {
+    stroke-dashoffset: -30;
+  }
+}
+
+/* Station Walk Path Animation */
+.station-walk-path {
+  animation: dashFlow 2s linear infinite;
+}
+
+/* ── Zoom Controls ── */
+.map-controls {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  z-index: 10;
+}
+
+.map-ctrl-btn {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all var(--trans-fast);
+}
+
+.map-ctrl-btn:hover {
+  color: var(--text-main);
+  background: rgba(30, 41, 59, 0.9);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.map-zoom-display {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+  padding: 0.35rem 0.85rem;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  z-index: 10;
+}
+
+.map-drag-hint {
+  position: absolute;
+  top: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-full);
+  padding: 0.3rem 0.85rem;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* ── Tooltip ── */
+.map-tooltip {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  max-width: 280px;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  z-index: 20;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: all 0.25s ease;
+}
+
+.map-tooltip.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.tooltip-header {
+  margin-bottom: 0.5rem;
+}
+
+.tooltip-cat-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tooltip-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.3;
+}
+
+.tooltip-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  margin-bottom: 0.5rem;
+}
+
+.tooltip-aisle {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--emart-yellow);
+  background: rgba(255, 196, 0, 0.1);
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-sm);
+  margin-right: 0.35rem;
+}
+
+.tooltip-tax-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--accent-green);
+  background: rgba(16, 185, 129, 0.1);
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Map Legend ── */
+.map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0.85rem 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(15, 23, 42, 0.3);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive Fixes */
+@media (max-width: 640px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .lang-selector-container {
+    justify-content: center;
+  }
+  
+  .hero-title {
+    font-size: 1.65rem;
+  }
+  
+  .store-actions {
+    grid-template-columns: 1fr;
+  }
+}
